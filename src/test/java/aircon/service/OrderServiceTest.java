@@ -41,6 +41,7 @@ public class OrderServiceTest {
     	
     	Order ord = orderService.CreateNewOrder(productManufacturerAndModel, customerName, targetAddress);
         Long saved_id = ord.getUid();
+        Assert.assertNotNull(saved_id);
         
         // Loading
         Order loaded = orderService.getById(saved_id);

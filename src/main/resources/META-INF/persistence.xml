@@ -4,6 +4,7 @@
 
 	<persistence-unit name="myUnit" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+<!-- 		<jta-data-source>java:/DefaultDS</jta-data-source> -->
 		<class>aircon.model.Order</class>
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>

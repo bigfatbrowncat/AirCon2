@@ -58,7 +58,7 @@ public class Order
 	 */
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long uid;									
+    private Long uid;
 	
 	/**
 	 * Момент создания заявки
