@@ -32,6 +32,7 @@
         <property name="persistenceXmlLocation" value="META-INF/persistence.xml"/>
     </bean>
 
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
     <!--<bean id="org.h2.tools.Server"
           class="org.h2.tools.Server"

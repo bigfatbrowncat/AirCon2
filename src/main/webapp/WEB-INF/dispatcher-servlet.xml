@@ -24,6 +24,7 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+	<bean id="orderSearch" class="aircon.controller.SearchRequestData" />
 
     <!--<bean id="org.h2.tools.Server"
           class="org.h2.tools.Server"
