@@ -19,7 +19,7 @@ public class OrderService {
     @Inject
     OrderDao dao;
 
-    @Transactional(readOnly = true)
+
     Order getById(Long uid) {
         return dao.getByUid(uid);
     }
@@ -60,7 +60,7 @@ public class OrderService {
 	 * @throws IncorrectOrderStateChange В случае если сменить состояние указанным образом невозможно
 	 */
 	
-	@Transactional
+
 	public Order CreateNewOrder(
 			String productManufacturerAndModel,
 			String customerName, 
@@ -70,7 +70,8 @@ public class OrderService {
 		res.setState(StateType.STATE_NEW);
 		setBasicOrderFields(res, productManufacturerAndModel, customerName, targetAddress);
 		
-		dao.saveOrUpdate(res);		
+		dao.saveOrUpdate(res);
+		//dao.
 		return res;
 	}
 	

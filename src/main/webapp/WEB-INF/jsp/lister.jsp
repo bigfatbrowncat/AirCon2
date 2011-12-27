@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="javax.servlet.http.HttpServletRequest" %>
 
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%-- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %> --%>
 
 <%!
 	String putChecked(HttpServletRequest request, String name)
@@ -19,8 +18,13 @@
 <body>
 <div> 
 	<form method="get">
-		<b>Поиск заказа:</b>
 		<table style="width: 500px">
+			<tr>
+			<td colspan="2">
+				<b>Поиск заказа:</b>
+			</td>
+			</tr>
+
 			<tr>
 				<td>Заказчик: </td><td><input style="width: 250px" name="customerNameSearchRequest" value="${customerNameSearchRequest}"/></td>
 			</tr>		

@@ -1,10 +1,18 @@
 package aircon.model;
 
-import java.util.Date;
 import java.math.BigDecimal;
-import java.util.Currency;
+import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /*
 @Entity
@@ -36,6 +44,7 @@ public class Order {
  * Заказ
  */
 @Entity
+@Table(name = "orders")
 public class Order
 {
 	public enum StateType
@@ -57,7 +66,7 @@ public class Order
 	 * Уникальный идентификатор заказа
 	 */
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uid;
 	
 	/**

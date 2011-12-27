@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@Controller(value="list")
+@Controller("lister")
 @RequestMapping("/list")
 public class ListOrdersController {
 
@@ -30,7 +30,7 @@ public class ListOrdersController {
 		model.addAttribute("searchCompleted", searchCompleted.equals("on"));
 		model.addAttribute("searchCancelled", searchCancelled.equals("on"));
 		
-        return "list";
+        return "lister";
         
     }
 	

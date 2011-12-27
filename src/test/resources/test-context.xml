@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
        default-lazy-init="true">
 
     <context:component-scan base-package="aircon">
@@ -19,20 +21,28 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
-	<bean id="jpaAdapter" class="aircon.test.MyHibernateJpaVendorAdapter">
-<!--     <bean id="jpaAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> -->
+<!-- 	<bean id="jpaAdapter" class="aircon.test.MyHibernateJpaVendorAdapter"> -->
+	<bean id="jpaAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="database" value="${jpa.database}"/>
         <property name="showSql" value="${jpa.showSql}"/>
     </bean>
 
-<!--     <bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> -->
-	<bean id="myEmf" class="aircon.test.MyLocalContainerEntityManagerFactoryBean">
+	<bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+<!-- 	<bean id="myEmf" class="aircon.test.MyLocalContainerEntityManagerFactoryBean"> -->
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter" ref="jpaAdapter"/>
         <property name="persistenceXmlLocation" value="META-INF/persistence.xml"/>
     </bean>
 
-	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+	<!-- this is for any transactions -->
+	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- this is for annotation-driven transactions -->
+	<tx:annotation-driven transaction-manager="txManager"/>
+	
+<!-- 	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/> -->
 
     <!--<bean id="org.h2.tools.Server"
           class="org.h2.tools.Server"
